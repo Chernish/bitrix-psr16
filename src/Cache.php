@@ -6,12 +6,12 @@ use DateInterval;
 use DateTimeImmutable;
 use Exception;
 use Psr\SimpleCache\CacheInterface;
-use Bitrix\Main\Data\ICacheEngine;
+use Bitrix\Main\Data\CacheEngineInterface;
 use Bitrix\Main\Data\Cache as BitrixCache;
 
 class Cache implements CacheInterface
 {
-    private ICacheEngine $cacheEngine;
+    private CacheEngineInterface $cacheEngine;
     private int $defaultTtl;
     private string $baseDir;
     private string $initDir;
@@ -22,7 +22,7 @@ class Cache implements CacheInterface
 
     public function __construct(
         int $defaultTtl = 3600,
-        ?ICacheEngine $cacheEngine = null,
+        ?CacheEngineInterface $cacheEngine = null,
         string $baseDir = "/bitrix/cache",
         string $initDir = ""
     ) {
